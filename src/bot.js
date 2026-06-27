@@ -4,7 +4,7 @@ const LogWatcher = require("./logWatcher.js");
 const fs = require("fs");
 const path = require("path");
 const { Client, GatewayIntentBits, REST, Routes, Collection, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
-//const db =require("./database.js");
+const db =require("./database.js");
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const GUILD_ID = process.env.GUILD_ID;
@@ -154,7 +154,7 @@ client.on("interactionCreate", async interaction => {
   }
 
   try {
-    //await command.execute(interaction, { db });
+    await command.execute(interaction, { db });
   } catch (err) {
     console.error(`❌ Error in /${interaction.commandName}:`, err);
     if (interaction.deferred || interaction.replied) {
